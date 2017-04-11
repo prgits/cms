@@ -4,7 +4,7 @@ module.exports = function(app, passport){
 
 	app.get('/api/v1/cars', function(req, res){
         res.header('Access-Control-Allow-Origin', '*');
-        res.send(JSON.stringify([
+        res.send([
             {
                 id: 1,
                 name: 'Honda Accord Crosstour',
@@ -52,7 +52,7 @@ module.exports = function(app, passport){
                 media: 'http://media.ed.edmunds-media.com/dodge/viper/2017/oem/2017_dodge_viper_coupe_acr_fq_oem_3_717.jpg',
                 price: '$123,890'
             }
-        ]));
+        ]);
 	});
 	
 	 /* GET home page. */
