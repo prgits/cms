@@ -54,7 +54,7 @@ module.exports = function(app, passport){
                     price: '$123,890'
                 }
             ]);
-        }, 2000);
+        }, 8000);
 	});
 	
 	 /* GET home page. */
