@@ -4,7 +4,6 @@ module.exports = function(app, passport){
 
 	app.get('/api/v1/cars', function(req, res){
         res.header('Access-Control-Allow-Origin', '*');
-        setTimeout(function() {
             res.send([
                 {
                     id: 1,
@@ -54,7 +53,6 @@ module.exports = function(app, passport){
                     price: '$123,890'
                 }
             ]);
-        }, 8000);
 	});
 	
 	 /* GET home page. */
