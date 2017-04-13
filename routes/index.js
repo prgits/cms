@@ -3,7 +3,7 @@ var Bbs = require('../persister/bbs');
 module.exports = function(app, passport){
 
 	app.get('/api/v1/cars', function(req, res){
-        res.header('Access-Control-Allow-Origin', '*');
+       	    res.header('Access-Control-Allow-Origin', '*');
             res.send([
                 {
                     id: 1,
@@ -53,6 +53,11 @@ module.exports = function(app, passport){
                     price: '$123,890'
                 }
             ]);
+	});
+	
+	app.get('/api/connect-async', function(req, res){
+       	    res.header('Access-Control-Allow-Origin', '*');
+            res.send([{"id":1,"color":"Red","sprocketCount":7,"owner":"John"},{"id":2,"color":"Taupe","sprocketCount":1,"owner":"George"},{"id":3,"color":"Green","sprocketCount":8,"owner":"Ringo"},{"id":4,"color":"Blue","sprocketCount":2,"owner":"Paul"}]);
 	});
 	
 	 /* GET home page. */
