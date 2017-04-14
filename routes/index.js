@@ -56,7 +56,7 @@ module.exports = function(app, passport){
 	});
 	
 	app.get('/api/connect-async', function(req, res){
-		var data = [{"id":1,"color":"Red","sprocketCount":7,"owner":"John"},{"id":2,"color":"Taupe","sprocketCount":1,"owner":"George"},{"id":3,"color":"Green","sprocketCount":8,"owner":"Ringo"},{"id":4,"color":"Blue","sprocketCount":2,"owner":"Paul"},{"id":5,"color":"test","sprocketCount":10,"owner":"Thinhnv"}];
+		var data = [{"id":1,"color":"Red","sprocketCount":7,"owner":"John"},{"id":2,"color":"Taupe","sprocketCount":1,"owner":"George"},{"id":3,"color":"Green","sprocketCount":8,"owner":"Ringo"},{"id":4,"color":"Blue","sprocketCount":2,"owner":"Paul"}];
 		res.send(data);
 	});
 	
