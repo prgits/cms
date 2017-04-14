@@ -89,7 +89,7 @@ module.exports = function (app, passport) {
                    {"id": 6, "color": "Don't Know", "sprocketCount": 6, "owner": "NVT"}];
         setTimeout(function () {
             res.send(data)
-        }, 0000);
+        }, 5000);
     });
 
     app.get('/api/loadInfo', function (req, res) {
