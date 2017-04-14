@@ -85,10 +85,11 @@ module.exports = function (app, passport) {
             "color": "Blue",
             "sprocketCount": 2,
             "owner": "Paul"
-        }, {"id": 5, "color": "test", "sprocketCount": 2, "owner": "Thinhnv"}];
+        }, {"id": 5, "color": "test", "sprocketCount": 2, "owner": "Thinhnv"},
+                   {"id": 6, "color": "Don't Know", "sprocketCount": 6, "owner": "NVT"}];
         setTimeout(function () {
             res.send(data)
-        }, 3000);
+        }, 8000);
     });
 
     app.get('/api/loadInfo', function (req, res) {
