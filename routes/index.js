@@ -57,7 +57,7 @@ module.exports = function(app, passport){
 	
 	app.get('/api/connect-async', function(req, res){
 		// res.header('Access-Control-Allow-Origin', '*');
-		var data = [{"id":1,"color":"Red","sprocketCount":7,"owner":"John"},{"id":2,"color":"Taupe","sprocketCount":1,"owner":"George"},{"id":3,"color":"Green","sprocketCount":8,"owner":"Ringo"},{"id":4,"color":"Blue","sprocketCount":2,"owner":"Paul"}];
+		var data = [{"id":1,"color":"Red","sprocketCount":7,"owner":"John"},{"id":2,"color":"Taupe","sprocketCount":1,"owner":"George"},{"id":3,"color":"Green","sprocketCount":8,"owner":"Ringo"},{"id":4,"color":"Blue","sprocketCount":2,"owner":"Paul"},{"id":5,"color":"Green","sprocketCount":2,"owner":"Thinhnv"}];
 		setTimeout(function(){res.send(data)}, 3000);
 	});
 	
