@@ -60,6 +60,26 @@ module.exports = function(app, passport){
             res.send([{"id":1,"color":"Red","sprocketCount":7,"owner":"John"},{"id":2,"color":"Taupe","sprocketCount":1,"owner":"George"},{"id":3,"color":"Green","sprocketCount":8,"owner":"Ringo"},{"id":4,"color":"Blue","sprocketCount":2,"owner":"Paul"}]);
 	});
 	
+	app.post('/api/login', function(req, res){
+       	    const credentials = req.body;
+	    if(credentials.userName==='admin@example.com' && credentials.password==='password'){
+	      res.json({
+		userName: credentials.userName,
+		role: 'ADMIN'
+	      });   
+	    }else{
+	      // just demonstration of server-side validation
+	      res.status('401').send({
+		message : 'Invalid user/password',
+		// userName - the same field name as used in form on client side
+		validationErrors: { 
+		  userName : 'Aha, server-side validation error',
+		  password: 'Use another password'
+		}
+	      });
+	    }
+	});
+	
 	 /* GET home page. */
 	app.get('/',isAuthenticated, function(req, res) {
 	   res.redirect('/readme');
