@@ -5,10 +5,10 @@ const postSchema = new mongoose.Schema({
     image: {type: String},
     description: {type: String},
     content: {type: String},
-    category_id: {type: Number},
+    category_id: {type: mongoose.Schema.ObjectId},
     seo_meta: {type: String},
     seo_url: {type: String},
-    created_by: {type: Number},
+    created_by: {type: mongoose.Schema.ObjectId},
     status: {type: Boolean},
     published_time: {type: Date},
 }, {timestamps: true});

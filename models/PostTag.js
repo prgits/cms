@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const postTagSchema = new mongoose.Schema({
-    post_id: Number,
-    tag_id: Number
+    post_id: mongoose.Schema.ObjectId,
+    tag_id: mongoose.Schema.ObjectId
 }, {timestamps: true});
 
 const PostTag = mongoose.model('PostTag', postTagSchema);
