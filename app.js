@@ -42,6 +42,7 @@ app.use(function(req, res, next) {
 
 require('./passport/pass')(passport);
 require('./routes/index')(app, passport);
+require('./routes/api')(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
