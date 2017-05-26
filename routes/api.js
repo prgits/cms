@@ -20,7 +20,7 @@ module.exports = function (app, passport) {
             "sprocketCount": 2,
             "owner": "Paul"
         }, {"id": 5, "color": "test", "sprocketCount": 2, "owner": "Thinhnv"},
-            {"id": 6, "color": "Don't Know", "sprocketCount": 6, "owner": "NVT"}];
+            {"id": 6, "color": "Don't Know", "sprocketCount": 6, "owner": "Nguyen Viet Thinh"}];
         setTimeout(function () {
             res.send(data)
         }, 5000);
@@ -34,37 +34,29 @@ module.exports = function (app, passport) {
     });
 
     app.get('/api/loadAuth', function (req, res) {
-        const user = {
-            name: req.body.name
-        };
-        req.session.user = user;
-        res.send(req.session.user || null);
+        // const user = {
+        //     name: req.body.name
+        // };
+        // req.session.user = user;
+        res.send(Promise.resolve(req.session.user || null));
     });
 
     app.post('/api/login', function (req, res) {
-        const credentials = req.body;
-        if (credentials.userName === 'admin@example.com' && credentials.password === 'password') {
-            res.json({
-                userName: credentials.userName,
-                role: 'ADMIN'
-            });
-        } else {
-            // just demonstration of server-side validation
-            res.status('401').send({
-                message: 'Invalid user/password',
-                // userName - the same field name as used in form on client side
-                validationErrors: {
-                    userName: 'Aha, server-side validation error',
-                    password: 'Use another password'
-                }
-            });
-        }
+      const user = {
+        name: req.body.name
+      };
+      req.session.user = user;
+      return res.send(Promise.resolve(user));
     });
 
-
-
-
-
+    app.get('/api/logout', function (req, res) {
+      res.send(new Promise((resolve) => {
+        req.session.destroy(() => {
+          req.session = null;
+          return resolve(null);
+        });
+      }))
+    });
     // Comment
     // This should be well-guarded secret on the server (in a file or database).
 //     var JWT_SECRET = "JWT Rocks!";
