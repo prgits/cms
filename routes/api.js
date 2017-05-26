@@ -6,7 +6,7 @@ module.exports = function (app, passport) {
 //  Logout api.  For illustration purpose we show how to check if the request is from an authorized user by
 //  verifying the jwt token included in the request header.  The same approach can be used to restrict access
 //  to other (more intersting) API calls.
-  export function getWidgets(req) {
+  function getWidgets(req) {
     let widgets = req.session.widgets;
     if (!widgets) {
       widgets = initialWidgets;
