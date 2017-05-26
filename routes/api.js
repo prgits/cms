@@ -1,13 +1,13 @@
 module.exports = function (app, passport) {
     // Test server is working (GET http://localhost:3001/api)
-    app.get("/", function(req, res) {
+    app.get("/api", function(req, res) {
         res.json({ message: "Hi, welcome to the server api!@@" });
     });
 //  Logout api.  For illustration purpose we show how to check if the request is from an authorized user by
 //  verifying the jwt token included in the request header.  The same approach can be used to restrict access
 //  to other (more intersting) API calls.
 
-    app.get('/widget/load/param1/param2', function (req, res) {
+    app.get('/api/widget/load/param1/param2', function (req, res) {
         // res.header('Access-Control-Allow-Origin', '*');
         var data = [{"id": 1, "color": "Red", "sprocketCount": 7, "owner": "John"}, {
             "id": 2,
@@ -26,14 +26,14 @@ module.exports = function (app, passport) {
         }, 5000);
     });
 
-    app.get('/loadInfo', function (req, res) {
+    app.get('/api/loadInfo', function (req, res) {
         res.send({
             message: 'This came from the api server',
             time: Date.now()
         });
     });
 
-    app.get('/loadAuth', function (req, res) {
+    app.get('/api/loadAuth', function (req, res) {
         const user = {
             name: req.body.name
         };
@@ -41,7 +41,7 @@ module.exports = function (app, passport) {
         res.send(req.session.user || null);
     });
 
-    app.post('/login', function (req, res) {
+    app.post('/api/login', function (req, res) {
         const credentials = req.body;
         if (credentials.userName === 'admin@example.com' && credentials.password === 'password') {
             res.json({
