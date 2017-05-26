@@ -6,14 +6,6 @@ module.exports = function (app, passport) {
 //  Logout api.  For illustration purpose we show how to check if the request is from an authorized user by
 //  verifying the jwt token included in the request header.  The same approach can be used to restrict access
 //  to other (more intersting) API calls.
-  function getWidgets(req) {
-    let widgets = req.session.widgets;
-    if (!widgets) {
-      widgets = initialWidgets;
-      req.session.widgets = widgets;
-    }
-    return widgets;
-  }
   app.get('/api/widget/load/param1/param2', function (req, res) {
     // res.header('Access-Control-Allow-Origin', '*');
     var data = [{"id": 1, "color": "Red", "sprocketCount": 7, "owner": "John"}, {
@@ -29,19 +21,7 @@ module.exports = function (app, passport) {
     }, {"id": 5, "color": "test", "sprocketCount": 2, "owner": "Thinhnv"},
       {"id": 6, "color": "Don't Know", "sprocketCount": 6, "owner": "Nguyen Viet Thinh"}];
 
-    res.json(new Promise((resolve, reject) => {
-      // make async call to database
-      setTimeout(() => {
-        if (Math.random() < 0.33) {
-          reject('Widget load fails 33% of the time. You were unlucky.');
-        } else {
-          resolve(getWidgets(req));
-        }
-      }, 1000); // simulate async load
-    }));
-    setTimeout(function () {
-      res.json(data)
-    }, 5000);
+    res.json(data);
   });
 
   app.get('/api/loadInfo', function (req, res) {
@@ -56,8 +36,13 @@ module.exports = function (app, passport) {
     //     name: req.body.name
     // };
     // req.session.user = user;
-    console.log(Promise.resolve(req.session.user || null));
-    res.json(null);
+    // console.log(Promise.resolve(req.session.user || null));
+    // res.json(Promise.resolve(req.session.user || null));
+    if (req.session.user) {
+      res.json(req.session.user);
+    } else {
+      res.json(null);
+    }
   });
 
   app.post('/api/login', function (req, res) {
